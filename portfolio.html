@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="az" class="dark">
+    <head>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <title>Yusif | Cybersecurity Portfolio</title>
+
+        <!-- Tailwind CDN -->
+        <script src="https://cdn.tailwindcss.com"></script>
+
+        <script>
+            tailwind.config = {
+                darkMode: 'class',
+                theme: {
+                    extend: {
+                        colors: {
+                            primary: '#00ffaa',
+                            lightBg: '#f5f5f7',
+                            lightBgAlt: '#e5e7eb',
+                            lightText: '#374151',
+                            lightText2: '#6b7280'
+                        },
+                        fontFamily: {
+                            nunito: ['Nunito', 'sans-serif']
+                        },
+                        animation: {
+                            fadeIn: "fadeIn 1s ease-out forwards",
+                            glitch: "glitch 1s infinite"
+                        },
+                        keyframes: {
+                            fadeIn: {
+                                '0%': {
+                                    opacity: 0,
+                                    transform: 'translateY(20px)'
+                                },
+                                '100%': {
+                                    opacity: 1,
+                                    transform: 'translateY(0)'
+                                }
+                            },
+                            glitch: {
+                                '0%': {
+                                    textShadow: '2px 2px red, -2px -2px blue'
+                                },
+                                '20%': {
+                                    textShadow: '-2px -2px red, 2px 2px blue'
+                                },
+                                '40%': {
+                                    textShadow: '2px -2px red, -2px 2px blue'
+                                },
+                                '60%': {
+                                    textShadow: '-2px 2px red, 2px -2px blue'
+                                },
+                                '80%': {
+                                    textShadow: '2px 2px red, -2px -2px blue'
+                                },
+                                '100%': {
+                                    textShadow: 'none'
+                                }
+                            }
+                        }
+                    }
+                }
+            };
+        </script>
+        <!-- Google Font & Font Awesome -->
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+            crossorigin="anonymous"
+            referrerpolicy="no-referrer"/>
+        <link
+            href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;900&display=swap"
+            rel="stylesheet"/>
+        <link rel="stylesheet" href="portfolio.css">
+
+        <!-- JS libs -->
+        <script
+            src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/2.0.16/typed.umd.js"></script>
+
+        <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+
+    </head>
+    <body
+        class="dark:bg-[#0b0f14] dark:text-gray-200 light-bg light-text overflow-x-hidden relative">
+        <!-- Animated BG -->
+        <div id="particles-js" class="fixed inset-0 z-0 pointer-events-none"></div>
+
+        <!-- Navbar -->
+        <header
+            class="fixed top-0 w-full bg-white/80 dark:bg-black/80 backdrop-blur-md border-b border-primary z-50">
+            <div class="max-w-6xl mx-auto flex items-center justify-between px-4 py-3">
+                <!-- Language pills -->
+                <div id="langWrap" class="flex gap-1">
+                    <button class="lang-btn px-4 py-1.5 text-xs rounded-full active" data-lang="az">AZ</button>
+                    <button class="lang-btn px-4 py-1.5 text-xs rounded-full" data-lang="en">EN</button>
+                    <button class="lang-btn px-4 py-1.5 text-xs rounded-full" data-lang="ru">RU</button>
+                </div>
+
+                <!-- Desktop navigation -->
+                <nav class="desktop-nav flex gap-6 text-sm font-semibold">
+                    <a href="#home" class="nav-link" data-i18n="navHome">Ana Səhifə</a>
+                    <a href="#about" class="nav-link" data-i18n="navAbout">Haqqımda</a>
+                    <a href="#skills" class="nav-link" data-i18n="navSkills">Bacarıqlar</a>
+                    <a href="#projects" class="nav-link" data-i18n="navProjects">Layihələr</a>
+                    <a href="#certs" class="nav-link" data-i18n="navCerts">Sertifikatlar</a>
+                    <a href="#contact" class="nav-link" data-i18n="navContact">Əlaqə</a>
+                </nav>
+
+                <!-- Mobile hamburger & Theme switch -->
+                <div class="flex items-center gap-3">
+                    <div class="hamburger" id="hamburger">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                    <div class="flex items-center justify-center">
+                        <label class="relative inline-flex items-center cursor-pointer">
+                            <input type="checkbox" id="themeToggle" class="sr-only peer">
+                            <div
+                                class="w-14 h-8 bg-gray-300 peer-focus:outline-none peer-focus:ring-2 peer-focus:ring-primary rounded-full peer dark:bg-gray-600 transition duration-500"></div>
+                            <div
+                                class="absolute left-1 top-1 bg-white w-6 h-6 rounded-full transition-all duration-500 peer-checked:translate-x-6 peer-checked:bg-gray-900 flex items-center justify-center text-yellow-500 dark:text-yellow-300 text-sm">
+                                <i id="themeIcon" class="fas fa-moon transition-all duration-300"></i>
+                            </div>
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Mobile Menu -->
+        <div class="mobile-menu" id="mobile-menu">
+            <a href="#home" class="mobile-nav-link" data-i18n="navHome">Ana Səhifə</a>
+            <a href="#about" class="mobile-nav-link" data-i18n="navAbout">Haqqımda</a>
+            <a href="#skills" class="mobile-nav-link" data-i18n="navSkills">Bacarıqlar</a>
+            <a href="#projects" class="mobile-nav-link" data-i18n="navProjects">Layihələr</a>
+            <a href="#certs" class="mobile-nav-link" data-i18n="navCerts">Sertifikatlar</a>
+            <a href="#contact" class="mobile-nav-link" data-i18n="navContact">Əlaqə</a>
+        </div>
+
+        <!-- Mobile menu overlay -->
+        <div
+            class="mobile-menu-overlay fixed inset-0 bg-black/50 opacity-0 pointer-events-none z-999 transition-opacity duration-300"
+            id="mobile-menu-overlay"></div>
+
+        <!-- Moon/Sun element -->
+        <div
+            id="moon"
+            class="fixed bottom-0 right-0 text-6xl text-yellow-300 opacity-0 pointer-events-none z-40">
+            <i class="fas fa-moon"></i>
+        </div>
+        <div
+            id="sun"
+            class="fixed top-20 right-10 text-6xl text-yellow-400 opacity-0 pointer-events-none z-40">
+            <i class="fas fa-sun"></i>
+        </div>
+
+        <!-- Hero -->
+        <section
+            id="home"
+            class="min-h-screen flex flex-col items-center justify-center text-center pt-24 px-4">
+            <h1 class="text-5xl md:text-7xl font-extrabold mb-4">
+                <span data-i18n="heroHi">Salam, mən</span>
+                <span class="text-primary">Yusif</span>
+            </h1>
+            <div class="text-xl md:text-2xl h-12 flex items-center">
+                <span id="typed"></span>
+            </div>
+        </section>
+
+        <!-- About -->
+        <section id="about" class="py-24 px-4 light-bg-alt dark:bg-gray-900">
+            <div class="max-w-4xl mx-auto text-center">
+                <h2 class="text-4xl font-bold text-primary mb-8" data-i18n="aboutTitle">Haqqımda</h2>
+                <p
+                    class="text-lg leading-relaxed light-text-secondary dark:text-gray-300"
+                    data-i18n="aboutBody">Mən
+                    Yusif Musazadə — Robototexnika mühəndisliyi üzrə təhsil alıram və
+                    kibertəhlükəsizlik (xüsusən Web Pentest) sahəsində dərin biliklər qazanıram. ROS
+                    2, Webots və AI modelləri ilə PUA-lar qururam, eyni zamanda RCE, SQLi, XSS kimi
+                    boşluqları tapı</p>
+            </div>
+        </section>
+
+        <!-- Skills -->
+        <section
+            id="skills"
+            class="py-24 px-4 dark:bg-gray-900 bg-lightBg animate-fadeIn">
+            <div class="max-w-5xl mx-auto text-center">
+                <h2 class="text-4xl font-bold text-primary mb-10">Bacarıqlar</h2>
+                <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-6">
+                    <div
+                        class="relative group glass p-6 hover:scale-105 transition-transform duration-300">
+                        <i class="fas fa-robot text-3xl text-primary mb-3"></i>
+                        <h3 class="font-bold light-text dark:text-white">ROS 2</h3>
+                        <div class="tooltip">Robot Operating System 2 – robotlar üçün modul əsaslı proqramlaşdırma mühiti</div>
+                    </div>
+                    <div
+                        class="relative group glass p-6 hover:scale-105 transition-transform duration-300">
+                        <i class="fas fa-cube text-3xl text-primary mb-3"></i>
+                        <h3 class="font-bold light-text dark:text-white">Webots</h3>
+                        <div class="tooltip">Robot simulyasiyası və sınaq mühiti – AI və nəzarət üçün idealdır</div>
+                    </div>
+                    <div
+                        class="relative group glass p-6 hover:scale-105 transition-transform duration-300">
+                        <i class="fas fa-shield-alt text-3xl text-primary mb-3"></i>
+                        <h3 class="font-bold light-text dark:text-white">Burp Suite</h3>
+                        <div class="tooltip">Web tətbiqlərində boşluq tapmaq üçün ən populyar pentesting aləti</div>
+                    </div>
+                    <div
+                        class="relative group glass p-6 hover:scale-105 transition-transform duration-300">
+                        <i class="fab fa-python text-3xl text-primary mb-3"></i>
+                        <h3 class="font-bold light-text dark:text-white">Python</h3>
+                        <div class="tooltip">Sadə sintaksisli güclü proqramlaşdırma dili – AI və pentest üçün ideal</div>
+                    </div>
+                    <div
+                        class="relative group glass p-6 hover:scale-105 transition-transform duration-300">
+                        <i class="fab fa-css3-alt text-3xl text-primary mb-3"></i>
+                        <h3 class="font-bold light-text dark:text-white">Tailwind CSS</h3>
+                        <div class="tooltip">Utility-first CSS framework – sürətli və səliqəli dizayn üçün</div>
+                    </div>
+                    <div
+                        class="relative group glass p-6 hover:scale-105 transition-transform duration-300">
+                        <i class="fab fa-linux text-3xl text-primary mb-3"></i>
+                        <h3 class="font-bold light-text dark:text-white">Linux Terminal</h3>
+                        <div class="tooltip">Komanda sətri ilə sistem idarəsi və pentest əmrləri</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects -->
+        <section id="projects" class="py-24 px-4 light-bg-alt dark:bg-gray-900">
+            <div class="max-w-6xl mx-auto text-center">
+                <h2 class="text-4xl font-bold text-primary mb-10" data-i18n="projectsTitle">Layihələr</h2>
+                <div class="grid md:grid-cols-3 gap-8">
+                    <div class="glass p-6 hover:scale-105 transition-transform duration-300">
+                        <i class="fas fa-drone text-4xl text-primary mb-4"></i>
+                        <h3
+                            class="font-bold mb-2 text-xl light-text dark:text-white"
+                            data-i18n="project1Title">Webots AI Drone</h3>
+                        <p
+                            class="text-sm opacity-80 light-text-secondary dark:text-gray-400"
+                            data-i18n="project1Desc">AI əsaslı yol tapma simulyasiyası.</p>
+                    </div>
+                    <div class="glass p-6 hover:scale-105 transition-transform duration-300">
+                        <i class="fas fa-bug text-4xl text-primary mb-4"></i>
+                        <h3
+                            class="font-bold mb-2 text-xl light-text dark:text-white"
+                            data-i18n="project2Title">Bug Bounty Platform</h3>
+                        <p
+                            class="text-sm opacity-80 light-text-secondary dark:text-gray-400"
+                            data-i18n="project2Desc">Boşluqları bildirmək sistemi.</p>
+                    </div>
+                    <div class="glass p-6 hover:scale-105 transition-transform duration-300">
+                        <i class="fas fa-helicopter text-4xl text-primary mb-4"></i>
+                        <h3
+                            class="font-bold mb-2 text-xl light-text dark:text-white"
+                            data-i18n="project3Title">ROS2 PID Drone</h3>
+                        <p
+                            class="text-sm opacity-80 light-text-secondary dark:text-gray-400"
+                            data-i18n="project3Desc">Hədəf izləmə və sabit uçuş.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+  <!-- Sertifikat Qalereyası -->
+  <section id="certs" class="py-24 px-4 dark:bg-gray-900 light-bg-alt">
+    <div class="container">
+      <div class="header">
+        <h1 class="title">Sertifikat Qalereyası</h1>
+        <p class="subtitle">Peşəkar nailiyyətlərimizi kəşf edin</p>
+      </div>
+      <div class="gallery">
+        <!-- Sertifikat kartları burada göstəriləcək -->
+        <div class="certificate-card" data-src="./IMG-20250605-WA0023[1].jpg">
+          <div class="glow-effect"></div>
+          <img src="./IMG-20250605-WA0023[1].jpg" alt="Sertifikat 1" class="certificate-img">
+          <div class="certificate-info">
+            <h3 class="certificate-title">Web Pentesting</h3>
+            <p class="certificate-desc">HTML, CSS və JS üzrə təcrübə</p>
+          </div>
+        </div>
+        <div class="certificate-card" data-src="cert2.jpg">
+          <div class="glow-effect"></div>
+          <img src="cert2.jpg" alt="Sertifikat 2" class="certificate-img">
+          <div class="certificate-info">
+            <h3 class="certificate-title">ROS 2 İnkişafı</h3>
+            <p class="certificate-desc">ROS əsaslı robot sistemləri</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Lightbox -->
+  <div class="lightbox" id="lightbox">
+    <div class="lightbox-content">
+      <img src="" alt="Certificate" class="lightbox-img" id="lightbox-img">
+      <button class="close-btn" id="close-btn">✕ Qapat</button>
+    </div>
+  </div>
+
+
+        <!-- Contact -->
+        <section id="contact" class="py-24 px-4 light-bg-alt dark:bg-gray-900">
+            <div class="max-w-4xl mx-auto text-center">
+                <h2 class="text-4xl font-bold text-primary mb-10" data-i18n="contactTitle">Əlaqə</h2>
+                <div class="flex justify-center gap-8 flex-wrap">
+                    <a
+                        href="https://linkedin.com/in/yusifmusazada"
+                        target="_blank"
+                        class="glass contact-btn p-6 hover:scale-110 transition-all duration-300 group flex flex-col items-center gap-2"
+                        title="LinkedIn">
+                        <i
+                            class="fab fa-linkedin text-4xl text-primary group-hover:text-blue-500 transition-colors duration-300"></i>
+                        <span class="text-sm font-semibold opacity-80">LinkedIn</span>
+                    </a>
+                    <a
+                        href="https://wa.me/994559228286"
+                        target="_blank"
+                        class="glass contact-btn p-6 hover:scale-110 transition-all duration-300 group flex flex-col items-center gap-2"
+                        title="WhatsApp">
+                        <i
+                            class="fab fa-whatsapp text-4xl text-primary group-hover:text-green-500 transition-colors duration-300"></i>
+                        <span class="text-sm font-semibold opacity-80">WhatsApp</span>
+                    </a>
+                    <a
+                        href="mailto:musazadayusif@gmail.com"
+                        class="glass contact-btn p-6 hover:scale-110 transition-all duration-300 group flex flex-col items-center gap-2"
+                        title="Email">
+                        <i
+                            class="fas fa-envelope text-4xl text-primary group-hover:text-red-500 transition-colors duration-300"></i>
+                        <span class="text-sm font-semibold opacity-80">Gmail</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+        <script src="./portfolio.js"></script>
+    </body>
+</html>
